@@ -1,0 +1,13 @@
+inputs.tfvars
+commands.txt
+
+.idea
+.terraform
+
+.terraform.lock.hcl
+*.iml
+*.xml
+*.tfplan
+*.tfstate
+*.pem
+*.ppk
