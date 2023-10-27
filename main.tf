@@ -9,6 +9,8 @@ resource "local_sensitive_file" "private_key_file" {
   content = module.key_pair.private_key_pem
 }
 
+# security group setup
+
 resource "aws_security_group" "jenkins_security_group" {
   name = "${var.jenkins_name_prefix}-security-group"
   vpc_id = var.vpc_id
@@ -50,7 +52,12 @@ resource "aws_security_group_rule" "egress_all_rule" {
   cidr_blocks       = ["0.0.0.0/0"]
 }
 
+# instance profile setup
+
+# TODO
+
 # can be changed to other Jenkins compatible AMI, but this one is free tier
+# must be careful not to break the user data script if you change the AMI
 data "aws_ami" "amazon_linux_2_latest_ami" {
   most_recent = true
   owners = ["amazon"]
