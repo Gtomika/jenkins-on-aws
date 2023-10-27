@@ -50,8 +50,3 @@ variable "jenkins_instance_type" {
   type = string
   description = "EC2 instance type for the Jenkins instance"
 }
-
-variable "ssh_user" {
-  type = string
-  description = "Username to use during SSH"
-}

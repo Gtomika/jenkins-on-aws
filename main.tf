@@ -4,6 +4,11 @@ module "key_pair" {
   create_private_key = true
 }
 
+resource "local_sensitive_file" "private_key_file" {
+  filename = "jenkins_instance_private_key.pem"
+  content = module.key_pair.private_key_pem
+}
+
 resource "aws_security_group" "jenkins_security_group" {
   name = "${var.jenkins_name_prefix}-security-group"
   vpc_id = var.vpc_id

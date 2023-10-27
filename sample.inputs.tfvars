@@ -13,5 +13,3 @@ jenkins_name_prefix = "jenkins"
 ssh_ip_whitelist = ["<your IP you want to SSH from>"]
 # this instance type is free tier eligible
 jenkins_instance_type = "t2.micro"
-# this is the SSH user for Amazon Linux
-ssh_user = "ec2-user"
