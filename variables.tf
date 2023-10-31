@@ -31,9 +31,9 @@ variable "vpc_id" {
   description = "The VPC that will be used, must be in selected region"
 }
 
-variable "public_subnet_id" {
-  type = string
-  description = "ID of a public subnet from the selected VPC"
+variable "public_subnet_ids" {
+  type = list(string)
+  description = "IDs of public subnets from the selected VPC"
 }
 
 variable "jenkins_name_prefix" {
@@ -41,12 +41,37 @@ variable "jenkins_name_prefix" {
   description = "Name prefix of Jenkins related resources"
 }
 
-variable "ssh_ip_whitelist" {
+variable "ip_whitelist" {
   type = list(string)
-  description = "List of CIDR blocks that should be allowed to SSH into the Jenkins instance"
+  description = "List of CIDR blocks that should be allowed to SSH into the Jenkins instance and connect to workers"
 }
 
-variable "jenkins_instance_type" {
+variable "jenkins_controller_instance_type" {
   type = string
-  description = "EC2 instance type for the Jenkins instance"
+  description = "EC2 instance type for the Jenkins controller instance"
+}
+
+variable "jenkins_ami" {
+  type = string
+  description = "AMI for the jenkins controller and workers"
+}
+
+variable "jenkins_worker_instance_type" {
+  type = string
+  description = "EC2 instance type for the workers"
+}
+
+variable "jenkins_workers_min" {
+  type = number
+  description = "At least this much worker instances must be running"
+}
+
+variable "jenkins_workers_max" {
+  type = number
+  description = "At most this much worker instances must be running"
+}
+
+variable "jenkins_workers_desired" {
+  type = number
+  description = "Desired amount of worker instances. Must be between min and max (can be equal to them)"
 }

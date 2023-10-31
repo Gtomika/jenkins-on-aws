@@ -1,10 +1,6 @@
 terraform {
   # Change to your desired backend, or provide it dynamically
-  backend "s3" {
-    bucket = "tamas-gaspar-epam-cloudx-terraform-state"
-    key = "JenkinsOnAws.tfstate"
-    region = "eu-central-1"
-  }
+  backend "s3" {}
 }
 
 provider "aws" {
